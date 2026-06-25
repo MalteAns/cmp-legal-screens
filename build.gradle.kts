@@ -10,7 +10,7 @@ plugins {
 kotlin {
     androidLibrary {
         namespace = "de.malteans.legal"
-        compileSdk = 36
+        compileSdk = 37
         minSdk = 30
 
         experimentalProperties["android.experimental.kmp.enableAndroidResources"] = true
