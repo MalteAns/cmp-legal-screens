@@ -9,9 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.ui.compose.m3.LibrariesContainer
-import pixlists.legal.generated.resources.Res
-import pixlists.legal.generated.resources.license_title
-import pixlists.legal.generated.resources.navigate_back
+import de.malteans.legal.resources.Res
+import de.malteans.legal.resources.license_title
+import de.malteans.legal.resources.navigate_back
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
