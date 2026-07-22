@@ -42,7 +42,7 @@ kotlin {
 
             implementation(libs.bundles.compose)
             implementation(libs.compose.material3)
-            implementation(libs.compose.material.icons.extended) // More Icons
+            implementation(libs.compose.materialIconsExtended) // More Icons
 
             // Back Handler
             implementation(libs.ui.backhandler)
