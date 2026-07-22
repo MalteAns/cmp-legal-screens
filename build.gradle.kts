@@ -36,7 +36,7 @@ kotlin {
     }
 
     sourceSets {
-        val desktopMain by getting
+        val desktopMain = getByName("desktopMain")
         commonMain.dependencies {
             implementation(libs.kotlin.stdlib)
 
