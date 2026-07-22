@@ -40,17 +40,16 @@ navigation<Route.LegalNav>(
 ## Dependencies:
 ### VersionCatalog:
 ```toml
-agp = "8.12.3"
-kotlin = "2.2.20"
-compose-multiplatform = "1.9.0"
-androidx-activity = "1.11.0"
+agp = "9.2.1"
+kotlin = "2.4.10"
+kotlinStdlib = "2.4.10"
+composeMultiplatform = "1.11.1"
+androidx-activityCompose = "1.13.0"
 
-kotlinStdlib = "2.2.20"
-
-aboutLibraries = "13.1.0"
+aboutLibraries = "15.0.4"
 
 [libraries]
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 
 ui-backhandler = { module = "org.jetbrains.compose.ui:ui-backhandler", version.ref= "compose-multiplatform" }
 
@@ -59,25 +58,26 @@ aboutlibraries-compose-core = { module = "com.mikepenz:aboutlibraries-compose-co
 aboutlibraries-compose-m3 = { module = "com.mikepenz:aboutlibraries-compose-m3", version.ref = "aboutLibraries" }
 
 [plugins]
+# Basics
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# KMP/CMP
+androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
-compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
-jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+# About Libraries
 aboutLibraries = { id = "com.mikepenz.aboutlibraries.plugin", version.ref = "aboutLibraries" }
 ```
 
 ### root build.gradle.kts
 ```kts
 plugins {
+    alias(libs.plugins.androidMultiplatformLibrary) apply false
+    alias(libs.plugins.composeMultiplatform) apply false
+    alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
-    alias(libs.plugins.android.kotlin.multiplatform.library) apply false
-    alias(libs.plugins.compose.multiplatform) apply false
-    alias(libs.plugins.compose.compiler) apply false
 
-    alias(libs.plugins.jetbrains.kotlin.serialization) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
 
     alias(libs.plugins.aboutLibraries) apply false
 }
@@ -87,11 +87,11 @@ plugins {
 ```kts
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.compose.compiler)
-
-    alias(libs.plugins.jetbrains.kotlin.serialization)
+    alias(libs.plugins.androidMultiplatformLibrary)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.composeCompiler)
+    
+    alias(libs.plugins.kotlin.serialization)
 
     alias(libs.plugins.aboutLibraries)
 }
